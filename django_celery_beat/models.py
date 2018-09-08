@@ -244,7 +244,7 @@ class PeriodicTask(models.Model):
         _('name'), max_length=200, unique=True,
         help_text=_('Useful description'),
     )
-    company = models.ForeignKey(Company, blank=True, null=True)
+    company = models.ForeignKey(Company, blank=True, null=True, on_delete=models.CASCADE)
     task = models.CharField(_('task name'), max_length=200)
     interval = models.ForeignKey(
         IntervalSchedule, on_delete=models.CASCADE,
