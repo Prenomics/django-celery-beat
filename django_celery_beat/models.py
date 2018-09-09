@@ -11,7 +11,7 @@ from django.utils.translation import ugettext_lazy as _
 from celery import schedules
 from celery.five import python_2_unicode_compatible
 
-from users.models import Company
+from intelek.models import Company, App
 
 from . import managers
 from .tzcrontab import TzAwareCrontab
@@ -245,6 +245,7 @@ class PeriodicTask(models.Model):
         help_text=_('Useful description'),
     )
     company = models.ForeignKey(Company, blank=True, null=True, on_delete=models.CASCADE)
+    app = models.ForeignKey(App, blank=True, null=True, on_delete=models.CASCADE)
     task = models.CharField(_('task name'), max_length=200)
     interval = models.ForeignKey(
         IntervalSchedule, on_delete=models.CASCADE,
