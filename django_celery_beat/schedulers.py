@@ -219,7 +219,7 @@ class DatabaseScheduler(Scheduler):
         return s
 
     def schedule_changed(self):
-        close_old_connections()
+        #close_old_connections()
         try:
             # If MySQL is running with transaction isolation level
             # REPEATABLE-READ (default), then we won't see changes done by
@@ -252,7 +252,7 @@ class DatabaseScheduler(Scheduler):
         info('Writing entries...')
         _tried = set()
         try:
-            close_old_connections()
+            #close_old_connections()
             with transaction.atomic():
                 while self._dirty:
                     try:
